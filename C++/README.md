@@ -1,1 +1,18 @@
-
+- Some Useful Resources
+    - [CP Handbook (pdf)](https://cses.fi/book.pdf)
+    - [CP Algorithms](https://cp-algorithms.com)
+    - [Usaco Guide](https://usaco.guide)
+    - [Guide to the Programming Contests -by Nite Nimajneb](http://comscigate.com/Books/contests/icpc.pdf)
+    - GeeksForGeeks : 
+        - [Complete Guide](https://www.geeksforgeeks.org/competitive-programming-a-complete-guide)
+        - [Data Structures](https://www.geeksforgeeks.org/data-structures)
+    - [CodeForces Edu](https://codeforces.com/edu/courses)
+    - [C++ Tips and Tricks](https://codeforces.com/blog/entry/74684)
+    - [Roadmap](https://workat.tech/problem-solving/article/competitive-programming-complete-roadmap-from-scratch-sbcrmnxb1sfg)
+    - List of other useful resources : 
+        - [Codeforces](https://codeforces.com/blog/entry/91363)
+        - [Codeforces](https://codeforces.com/blog/entry/57282)
+        - [Codeforces](https://codeforces.com/blog/entry/13529)
+        - [Handbook](https://cses.fi/book/book.pdf)
+        - [Open Courses](https://github.com/prakhar1989/awesome-courses#algorithms)
+        - [Good Tutorials on Codeforces](https://codeforces.com/blog/entry/57282)
