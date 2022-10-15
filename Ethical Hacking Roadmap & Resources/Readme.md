@@ -9,4 +9,4 @@ So, that’s why here is the most demanding roadmap on the internet “Roadmap t
 
 ## Resource link For Android Development Roadmap
 
-Here is The resource link: [Ultimate Roadmap for Becoming an certified Ethical Hacker]([https://weboking.tech/android-developer-roadmap-2022-most-simple-most-effective-and-ultimate-roadmap-ever/](https://weboking.tech/how-to-become-an-ethical-hacker-full-roadmap-download/))
+Here is The resource link: https://weboking.tech/how-to-become-an-ethical-hacker-full-roadmap-download/
