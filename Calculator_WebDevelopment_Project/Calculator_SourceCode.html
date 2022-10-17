@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Monsterrat", sans-serif;
+      }
+
+      body {
+        background: #5a5a5a;
+      }
+
+      body h1 {
+        text-align: center;
+        margin-top: 2%;
+        font-size: 48px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ffffff;
+      }
+      .main {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -5%;
+      }
+
+      .main .cform {
+        width: 372px;
+        height: 525px;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        font-size: 25px;
+        font-weight: 500;
+        background-color: #ffb730;
+        padding: 1%;
+      }
+
+      .main .cform .display input {
+        background-color: #000000;
+        color: white;
+        padding: 5%;
+        border: solid 5px white;
+      }
+
+      .main .cform div {
+        width: 350px;
+        height: calc(450px / 6);
+        display: flex;
+        flex: 1;
+      }
+
+      .main .cform div input {
+        width: 100%;
+        height: 100%;
+        font-size: 25px;
+        font-weight: 500;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .buttons {
+        margin-top: 2%;
+      }
+      .numbers {
+        color: #ffffff;
+        background-color: #646464;
+        border: 1px solid rgb(34, 109, 194);
+        border-radius: 45px;
+        margin: 3%;
+      }
+
+      .numbers:hover {
+        color: black;
+        background-color: white;
+        border: solid 10px black;
+      }
+
+      .deletebtn {
+        background-color: #6f00b9;
+        color: #fff;
+        font-size: larger;
+        margin-top: 2%;
+      }
+
+      .deletebtn:hover {
+        background-color: #ffffff;
+        color: #6f00b9;
+        border: solid 1px #6f00b9;
+      }
+
+      .equalbtn {
+        background-color: #e92b2b;
+        color: #fff;
+        border-radius: 50px;
+        margin: 3%;
+      }
+
+      .equalbtn:hover {
+        background-color: #ffffff;
+        color: #e92b2b;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <div class="main">
+      <form class="cform" name="cform">
+        <div class="display">
+          <input type="text" name="display" />
+        </div>
+
+        <div class="buttons">
+          <input
+            type="button"
+            class="deletebtn"
+            name="delete"
+            value="AC"
+            onclick="Delete()"
+          />
+        </div>
+        <div class="buttons">
+          <input
+            type="button"
+            class="numbers"
+            name="num7"
+            value="7"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="num8"
+            value="8"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="num9"
+            value="9"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="div"
+            value="/"
+            onclick="valueButton(this);"
+          />
+        </div>
+        <div class="buttons">
+          <input
+            type="button"
+            class="numbers"
+            name="num4"
+            value="4"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="num5"
+            value="5"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="num6"
+            value="6"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="mul"
+            value="*"
+            onclick="valueButton(this);"
+          />
+        </div>
+        <div class="buttons">
+          <input
+            type="button"
+            class="numbers"
+            name="num1"
+            value="1"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="num2"
+            value="2"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="num3"
+            value="3"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="sub"
+            value="-"
+            onclick="valueButton(this);"
+          />
+        </div>
+        <div class="buttons">
+          <input
+            type="button"
+            class="numbers"
+            name="num0"
+            value="0"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="dot"
+            value="."
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="numbers"
+            name="plus"
+            value="+"
+            onclick="valueButton(this);"
+          />
+          <input
+            type="button"
+            class="equalbtn"
+            name="equal"
+            value="="
+            onclick="Calculate()"
+          />
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function valueButton(e) {
+        cform.display.value += e.value;
+      }
+
+      function Delete() {
+        cform.display.value = null;
+      }
+
+      function Calculate() {
+        cform.display.value = eval(cform.display.value);
+      }
+    </script>
+  </body>
+</html>
