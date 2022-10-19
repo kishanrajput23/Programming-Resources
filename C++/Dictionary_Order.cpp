@@ -1,6 +1,3 @@
-/*
-Sort Word Dictionary Order
-*/
 #include <iostream>
 using namespace std;
 
@@ -33,28 +30,3 @@ int main()
     }
     return 0;
 }
-
-/*
-Enter 10 words: 
-C 
-C++
-Java
-Python
-Perl
-R
-Matlab
-Ruby
-JavaScript
-PHP
-In lexicographical order: 
-C
-C++
-Java
-JavaScript
-Matlab
-PHP
-Perl
-Python
-R
-Ruby
-*/
