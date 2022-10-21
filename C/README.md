@@ -15,3 +15,7 @@ https://youtu.be/7Dh73z3icd8
 
 <h1>6. Apna College(Youtube video)</h1>
 https://youtu.be/irqbmMNs2Bo
+
+
+<h1> 7. Best book for C language </h1>
+https://www.pdfdrive.com/let-us-c-by-yashwant-e200713283.html
