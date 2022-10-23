@@ -1,0 +1,21 @@
+.bacon{
+  background-color: blue;
+}
+
+
+h1{
+  color: red;
+}
+
+
+#heading{
+  color: blue;
+}
+
+.circular{
+  border-radius: 100%;
+}
+
+img:hover{
+  background-color: gold;
+}
