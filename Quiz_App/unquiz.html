@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnQuiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+<body x-data="data()" class="bg-gray-200">
+    
+    <div class="container mx-auto bg-gray-200 p-4">
+        <div class="grid grid-cols-3 gap-4" x-show="selectedQuizId === 0">
+            <template x-for="quiz in quizzes">
+                <button class="bg-white p-6 text-3xl hover:bg-gray-200 font-light text-center rounded-2xl" @click="selectQuiz(quiz)">
+                    <span x-text="quiz.topic" ></span> (<span x-text="quiz.questions.length" ></span>)
+                </button>
+            </template>
+        </div>
+        <div class="" x-show="selectedQuizId !== 0">
+            <div x-show="!selectedQuiz.isComplete">
+                <div class="bg-purple-500 text-white p-6 rounded-3xl">
+                    <h3 class="text-4xl" x-text="selectedQuiz.topic"></h3>
+                </div>
+                <div class="flex justify-center mt-12 gap-8">
+                    <div class="w-1/2 flex flex-col items-start justify-end">
+                        <div class="" x-show="selectedQuestion.isAnswered">
+                            <div class="text-4xl" x-text="selectedQuestion.isCorrect ? 'Correct!' : 'Incorrect!'"></div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-64 w-64 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" x-show="selectedQuestion.isCorrect">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-64 w-64 text-red-500" viewBox="0 0 20 20" fill="currentColor" x-show="!selectedQuestion.isCorrect">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                            <div class="text-xl" x-text="selectedQuestion.explanation"></div>
+                        </div>
+                    </div>
+                    <div class="w-1/2">
+                        <div class="text-right text-2xl font-semibold">Question <span x-text="selectedQuestionId + 1"></span> of <span x-text="selectedQuiz.questions.length"></span></div>
+                        <div class="h-3 bg-white rounded-full w-full mt-4">
+                            <div class="bg-red-500 h-3 rounded-full" :class="progressWidth()"></div>
+                        </div>
+                        <div class="text-3xl mt-6" x-text="selectedQuestion.title"></div>
+                        <div class="flex flex-col space-y-4">
+                            <template x-for="(option, i) in selectedQuestion.options">
+                                <button
+                                    class="rounded-2xl text-xl p-4 text-left"
+                                    :class="option.isClicked ? ( option.isCorrect ? 'bg-green-500' : 'bg-red-500' ) : 'bg-white hover:bg-gray-300'"
+                                    x-text="option.title"
+                                    @click="checkAnswer(option, i)">
+                                </button>
+                            </template>
+                        </div>
+                        <div class="mt-8 flex gap-4">
+                            <button class="w-1/2 bg-white hover:bg-gray-300 p-4 text-lg rounded-xl">Previous</button>
+                            <button class="w-1/2 p-4 text-lg rounded-xl" :class="selectedQuestion.isAnswered ? 'bg-blue-500 hover:bg-blue-600 text-white' : 'bg-white hover:bg-gray-300'" @click="nextQuestion()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div x-show="selectedQuiz.isComplete" class="flex flex-col items-center justify-center">
+                <div class="text-3xl">You scored</div>
+                <div class="text-8xl mt-6" x-text="Math.floor(selectedQuiz.score/selectedQuiz.questions.length * 100) + '%'"></div>
+                <div class="text-2xl mt-6"> or <span x-text="selectedQuiz.score"></span> out of <span x-text="selectedQuiz.questions.length"></span> </div>
+                <div class="mt-12">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-64 w-64 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" x-show="selectedQuiz.score >= selectedQuiz.minScore">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-64 w-64 text-red-500" viewBox="0 0 20 20" fill="currentColor" x-show="selectedQuiz.score < selectedQuiz.minScore">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function data(){
+            return {
+                init(){
+                    this.selectQuiz(this.quizzes[0]);
+                },
+                selectedQuizId: 0,
+                selectedQuiz: {},
+                selectQuiz(_quiz){
+                    this.selectedQuizId = _quiz.id;
+                    this.selectedQuiz = _quiz;
+
+                    this.selectedQuestionId = 0;
+                    this.selectQuestion();
+                },
+                progressWidth(){
+                    progress = Math.floor(this.selectedQuestionId / this.selectedQuiz.questions.length * 100);
+                    console.log(progress)
+                    return `w-[${progress}%]`;
+                },
+                selectedQuestionId: 0,
+                selectedQuestion: {},
+                selectQuestion(){
+                    this.selectedQuestion = this.selectedQuiz.questions[this.selectedQuestionId];
+                },
+                nextQuestion(){
+                    if(this.selectedQuestionId < this.selectedQuiz.questions.length - 1){
+                        this.selectedQuestionId++;
+                        this.selectQuestion();
+                    } else if(this.selectedQuestionId == this.selectedQuiz.questions.length - 1){
+                        this.selectedQuiz.isComplete = true;
+                    }
+                },
+                checkAnswer(_option, index){
+                    if(!this.selectedQuestion.isAnswered){
+                        this.selectedQuestion.isAnswered = true;
+                        _option.isClicked = true;
+                        if(_option.isCorrect){
+                            this.selectedQuestion.isCorrect = true;
+                            this.selectedQuiz.score++;
+                        }
+                    }
+                },
+                quizzes: [
+                    {
+                        id: 1, 
+                        topic: "css", 
+                        isComplete: false,
+                        score: 0,
+                        minScore: 2,
+                        questions: [
+                            {
+                                title: "What does * represent in CSS?",
+                                explanation: "The * represents all elements in CSS",
+                                options: [
+                                    {title: "A class", isCorrect: false, isClicked: false, },
+                                    {title: "Everything", isCorrect: true, isClicked: false, },
+                                    {title: "An ID", isCorrect: false, isClicked: false, },
+                                ],
+                                isAnswered: false,
+                                isCorrect: false,
+                            },
+                            {
+                                title: "What does . represent in CSS?",
+                                explanation: "The . represents class in CSS",
+                                options: [
+                                    {title: "A class", isCorrect: true, isClicked: false, },
+                                    {title: "Everything", isCorrect: false, isClicked: false, },
+                                    {title: "An ID", isCorrect: false, isClicked: false, },
+                                ],
+                                isAnswered: false,
+                                isCorrect: false,
+                            },
+                            {
+                                title: "What does # represent in CSS?",
+                                explanation: "The # represents an ID in CSS",
+                                options: [
+                                    {title: "A class", isCorrect: false, isClicked: false, },
+                                    {title: "Everything", isCorrect: false, isClicked: false, },
+                                    {title: "An ID", isCorrect: true, isClicked: false, },
+                                ],
+                                isAnswered: false,
+                                isCorrect: false,
+                            },
+                        ]
+                    },
+
+
+                    {id: 2, topic: "html", questions: []},
+                    {id: 3, topic: "javascript", questions: []},
+                    {id: 4, topic: "alpine", questions: []},
+                    {id: 5, topic: "vuejs", questions: []},
+                    {id: 6, topic: "jQuery", questions: []},
+                    {id: 7, topic: "tailwind", questions: []},
+                    {id: 8, topic: "firebase", questions: []},
+                    {id: 9, topic: "php", questions: []},
+                ],
+            };
+        }
+    </script>
+</body>
+</html>
