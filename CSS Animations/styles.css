@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main1 {
+    background: rgb(199, 199, 199);
+    height: 30vw;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#img1,
+#img2,
+#img3 {
+    height: 100%;
+    position: absolute;
+    animation-name: zoom1;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+#img2 {
+    animation-delay: 2s;
+}
+
+#img3 {
+    animation-delay: 4s;
+}
+
+/* 1st */
+@keyframes zoom1 {
+    0% {
+        height: 0;
+    }
+
+    30% {
+        height: 100%;
+    }
+
+    50% {
+        height: 0;
+    }
+
+    70% {
+        height: 0;
+    }
+
+    100% {
+        height: 0;
+    }
+}
+
+/* 2nd */
+.main2 {
+    background-color: rgb(122, 122, 122);
+    height: 30vw;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#img4,
+#img5,
+#img6 {
+    height: 100%;
+    position: absolute;
+    animation-name: zoom2;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+#img5 {
+    animation-delay: 2s;
+}
+
+#img6 {
+    animation-delay: 4s;
+}
+
+@keyframes zoom2 {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* 3rd */
+.main4 {
+    background-color: rgb(255, 255, 255);
+    height: 30vw;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#img12,
+#img13,
+#img14 {
+    height: 100%;
+    position: absolute;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    transform-origin: 1;
+}
+
+#img12 {
+    animation-name: tilt1;
+}
+
+#img13 {
+    animation-name: tilt2;
+    animation-delay: 2s;
+}
+
+#img14 {
+    animation-name: tilt3;
+    animation-delay: 4s;
+}
+
+@keyframes tilt1 {
+    0% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes tilt2 {
+    0% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes tilt3 {
+    0% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
+}
