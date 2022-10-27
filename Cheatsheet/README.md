@@ -5,3 +5,5 @@
 
 
 • VS Code Cheatsheet [Click Here](https://drive.google.com/file/d/1DIt5oDTKQEkD0Gt9yFOrGDeGYG5h0GmY/view?usp=sharing).
+
+• DSA Cheatsheet [Click Here](https://drive.google.com/file/d/1zE-i9QkGJlKjHTCkBBVr-q9Pk2Ek7Jav/view?usp=sharing).
