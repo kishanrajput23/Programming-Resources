@@ -6,6 +6,10 @@
 
 • Data Science Cheatsheet [Click Here](https://drive.google.com/file/d/1BeqjpdW9wgDDMGKcXTEaJeyuhiUANKKj/view?usp=sharing).
 
+• VS Code Cheatsheet [Click Here](https://drive.google.com/file/d/1DIt5oDTKQEkD0Gt9yFOrGDeGYG5h0GmY/view?usp=sharing).
+
+• Docker Cheatsheet [Click Here](https://drive.google.com/file/d/1KIcBT3-TmbdbuUdO2jZ78Pf84zxd2kYH/view?usp=sharing).
+
 - [CSS Cheat Sheet](https://htmlcheatsheet.com/css/)
 - [npm Cheat Sheet](https://media.jfrog.com/wp-content/uploads/2021/08/23165237/JFrog_NPM_CheatSheet_V4.pdf)
 - [Kotlin Cheat Sheet](https://kt.academy/Kotlin_Cheat_Sheet.pdf)
