@@ -5,3 +5,5 @@
 
 
 • VS Code Cheatsheet [Click Here](https://drive.google.com/file/d/1DIt5oDTKQEkD0Gt9yFOrGDeGYG5h0GmY/view?usp=sharing).
+
+• Data Science Cheatsheet [Click Here](https://drive.google.com/file/d/1BeqjpdW9wgDDMGKcXTEaJeyuhiUANKKj/view?usp=sharing).
